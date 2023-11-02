@@ -1,17 +1,29 @@
 <swiper-container
+  #swiper1
   id="swiper1"
   init="false"
 >
-  <swiper-slide>Slide 1</swiper-slide>
-  <swiper-slide>Slide 2</swiper-slide>
-  <swiper-slide>Slide 3</swiper-slide>
+  <swiper-slide>
+    <details
+      #detailsElement
+      (toggle)="onToggle(detailsElement, $any(swiper1))"
+      (click)="toggleOrFlip($event, detailsElement, $any(swiper1))"
+    >
+      <summary #summary><div>Details</div></summary>
+      Something small enough to escape casual notice.
+    </details>
+  </swiper-slide>
+  <swiper-slide><div class="details" (click)="$any(swiper1).swiper?.slideTo(2)">Slide 2</div></swiper-slide>
+  <swiper-slide><div class="details" (click)="summary.click()">Slide 3</div></swiper-slide>
 </swiper-container>
 
 <swiper-container
+  #swiper2
   id="swiper2"
   init="false"
 >
   <swiper-slide>
+    <button (click)="enableSwiper($any(swiper2))">Enable swiper</button>
     <img src=" https://swiperjs.com/demos/images/nature-1.jpg" />
   </swiper-slide>
   <swiper-slide>

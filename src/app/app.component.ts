@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 
 import {register} from 'swiper/element/bundle';
 import {Swiper, SwiperOptions} from "swiper/types";
+
 register();
 
 interface HTMLSwiperElement extends HTMLElement {
-  swiper: Swiper,
+  swiper?: Swiper,
   initialize: () => void,
 }
 
@@ -24,12 +25,12 @@ export class AppComponent implements OnInit {
     },
     flipEffect: {
       limitRotation: true,
-      slideShadows: true,
+      slideShadows: false,
     },
     grabCursor: true,
-    pagination: true,
-    navigation: true,
-    enabled: true,
+    pagination: false,
+    navigation: false,
+    enabled: false,
     on: {
       beforeTransitionStart: () => window.getSelection()?.removeAllRanges(),
       init() {
@@ -53,4 +54,29 @@ export class AppComponent implements OnInit {
     swiperEl.initialize();
   }
 
+  onToggle(details: HTMLDetailsElement, swiperElement: HTMLSwiperElement) {
+    const {swiper} = swiperElement;
+    if (details.open) {
+      swiper?.enable();
+      return;
+    }
+    swiperElement.swiper?.slideTo(0);
+    swiper?.disable();
+  }
+
+  toggleOrFlip($event: Event, details: HTMLDetailsElement, swiperElement: HTMLSwiperElement): boolean {
+    const targetEl = $event.target as HTMLElement;
+    console.log(details.open, targetEl.tagName);
+    if (details.open && targetEl.tagName.toLowerCase() !== 'summary') {
+      $event.preventDefault();
+      swiperElement.swiper?.slideTo(1);
+      return false;
+    }
+    return true;
+  }
+
+  enableSwiper(swiperElement: HTMLSwiperElement): void {
+    swiperElement.swiper?.enable();
+    swiperElement.classList.add('swiper-enabled');
+  }
 }
