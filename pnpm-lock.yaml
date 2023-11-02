@@ -33,8 +33,8 @@ dependencies:
     specifier: ~7.8.0
     version: 7.8.1
   swiper:
-    specifier: '10'
-    version: 10.3.1
+    specifier: '11'
+    version: 11.0.3
   tslib:
     specifier: ^2.3.0
     version: 2.6.2
@@ -6222,8 +6222,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /swiper@10.3.1:
-    resolution: {integrity: sha512-24Wk3YUdZHxjc9faID97GTu6xnLNia+adMt6qMTZG/HgdSUt4fS0REsGUXJOgpTED0Amh/j+gRGQxsLayJUlBQ==}
+  /swiper@11.0.3:
+    resolution: {integrity: sha512-MyV9ooQsriAe2EibeamqewLjgCfSvl2xoyratl6S3ln5BXDL4BzlO6mxcbLMCzQL6Z60b/u0AS/nKrepL0+TAg==}
     engines: {node: '>= 4.7.0'}
     dev: false
 
