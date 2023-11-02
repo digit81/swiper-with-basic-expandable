@@ -18,6 +18,10 @@ interface HTMLSwiperElement extends HTMLElement {
 export class AppComponent implements OnInit {
 
   readonly swiperParams: SwiperOptions = {
+    touchStartPreventDefault: false,
+    preventClicks: false,
+    preventClicksPropagation: false,
+
     effect: 'flip',
     cubeEffect: {
       shadow: false,
